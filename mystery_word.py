@@ -54,11 +54,12 @@ def play_game():
         return list(get_word)
     split_list = split(get_word)
     # print(split_list)
+    new_list = [(letter.replace(letter, "_")) for letter in split_list]
     guesses = []
     while len(guesses) <= 8:
         guesses.append(guess_character())
-    new_list = [(item.replace(item, "_")) for item in split_list]
-    print(new_list)
+        new_list = [(letter.replace(letter, "_")) if letter not in guesses else letter for letter in split_list] 
+        print(new_list)
 
 if __name__ == "__main__":
     play_game()
