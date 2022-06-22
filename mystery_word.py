@@ -1,7 +1,7 @@
 import random
 
 def generate_word_for_game():
-    file = "test-word.txt"
+    file = "words.txt"
     with open(file) as open_file:
         read_file = open_file.read ()
     word_list = str.split(read_file)
@@ -16,6 +16,7 @@ def make_spaces():
         return list(get_word)
     split_list = list(get_word)
     spaces = " _ " * len (split_list)
+    print (f"Welcome to Mystery Words - Your Word to Guess Contains {len(split_list)} Letters")
     print(spaces)
     return split_list  
 
@@ -47,13 +48,6 @@ def guess_against_word(split_list):
 def play_game():
     split_list = make_spaces()
     start_play = guess_against_word(split_list)
-    # guesses = []
-    # while len(guesses) < 8:
-    #     guesses.append(guess_character())
-    #     new_list = [(letter.replace(letter, "_")) if letter not in guesses else letter for letter in split_list] 
-    #     print(new_list)
 
 if __name__ == "__main__":
     play_game()
-
-    #print (f"the secret wordf conterains {len (random word) } letters")
