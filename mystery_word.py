@@ -9,16 +9,6 @@ def generate_word_for_game():
     answer = word_list [index]
     return answer 
 
-def compare_guess_to_word(guess, word):
-    # this will take user_guess variable and computer_word variable
-    if guess in word:
-        print(f'{guess} is in the mystery word')
-        # change display to show where the guess is
-    else:
-        print(f'{guess} is not in the mystery word.')
-        #decrement number of guesses left  
-    return guess       
-
 def guess_character():
     user_guess = input('Guess a letter: ')  
     if len(user_guess) == 1 and user_guess.isalpha():
@@ -37,7 +27,7 @@ def play_game():
     # print(split_list)
     new_list = [(letter.replace(letter, "_")) for letter in split_list]
     guesses = []
-    while len(guesses) <= 8:
+    while len(guesses) < 8:
         guesses.append(guess_character())
         new_list = [(letter.replace(letter, "_")) if letter not in guesses else letter for letter in split_list] 
         print(new_list)
