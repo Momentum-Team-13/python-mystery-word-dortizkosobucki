@@ -58,15 +58,15 @@ B _ _ B A _ D
 
 A user is allowed 8 guesses. Remind the user of how many guesses they have left after each round.
 
-_A user loses a guess only when they guess incorrectly._ If they guess a letter that is in the secret word, they do not lose a guess.
+<!-- _A user loses a guess only when they guess incorrectly._ If they guess a letter that is in the secret word, they do not lose a guess. -->
 
 If the user guesses the same letter twice, do not take away a guess.
 
 Instead, print a message letting them know they've already guessed that letter and ask them to try again.
 
-The game should end when the user constructs the full word or runs out of guesses.
+<!-- The game should end when the user constructs the full word or runs out of guesses. -->
 
-If the player runs out of guesses, reveal the word to the user when the game ends.
+<!-- If the player runs out of guesses, reveal the word to the user when the game ends. -->
 
 ### More features
 

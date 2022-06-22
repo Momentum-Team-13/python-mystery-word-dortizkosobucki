@@ -1,7 +1,7 @@
 import random
 
 def generate_word_for_game():
-    file = "words.txt"
+    file = "test-word.txt"
     with open(file) as open_file:
         read_file = open_file.read ()
     word_list = str.split(read_file)
@@ -16,14 +16,15 @@ def make_spaces():
         return list(get_word)
     split_list = list(get_word)
     spaces = " _ " * len (split_list)
-    print (f"Welcome to Mystery Words - Your Word to Guess Contains {len(split_list)} Letters")
+    print (f"Welcome to Mystery Words - Your Word to Guess Contains {len(split_list)} Letters. \nYou are allowed 8 incorrect guesses per round. \nTrying the same letter twice does not take away from your guesses - we know accidents happen!")
     print(spaces)
     return split_list  
 
 def guess_against_word(split_list):
     correct_letters = []
     incorrect_letters = []
-    display = [(letter.replace(letter, "_")) if letter not in correct_letters else letter for letter in split_list]
+    guesses = 8 
+    display = [(letter.replace(letter, " _ ")) if letter not in correct_letters else letter for letter in split_list]
     # print(display)
     while len(incorrect_letters) < 8:
         letter = input("Guess a letter:")
@@ -42,8 +43,9 @@ def guess_against_word(split_list):
                 incorrect_letters.append(lowercase_guess)
         else:
             print (f"That guess wasn't valid, please try again!")
-        print(f'Letters already guessed:{incorrect_letters + correct_letters}')
-    print ("Game Over!")
+            
+        print(f'Letters already guessed:{incorrect_letters}')
+    print (f"Game Over! The word you were trying to guess was {split_list}")
 
 def play_game():
     split_list = make_spaces()
