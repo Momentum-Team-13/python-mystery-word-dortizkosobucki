@@ -1,7 +1,7 @@
 import random
 
 def generate_word_for_game():
-    file = "text-word.txt"
+    file = "test-word.txt"
     with open(file) as open_file:
         read_file = open_file.read ()
     word_list = str.split(read_file)
@@ -19,37 +19,18 @@ def compare_guess_to_word(guess, word):
         #decrement number of guesses left  
     return guess       
 
-def get_word_to_guess():
-    open_file = open('test-word.txt')
-    #print(open_file.read())
-    string_word = str(open_file.read())
-    #print(string_word)
-    return string_word
-
-def user_guess():
-    user_inpt = input("Guess a letter: ")
-    if user_inpt.isalpha():
-        letter = user_inpt
-        return letter
-    else:
-        print("That guess was not a letter.")
-        return user_guess()
-
 def guess_character():
     user_guess = input('Guess a letter: ')  
     if len(user_guess) == 1 and user_guess.isalpha():
         user_guess = user_guess.lower()
-        print(f'You guessed {user_guess}')
+        # print(f'You guessed {user_guess}')
         return user_guess  
     else:    
         print('Your guess is not a single letter.')   
         return guess_character()    
 
-    the_input = user_guess()
-    # print(the_input)
-
 def play_game():
-    get_word = get_word_to_guess()
+    get_word = generate_word_for_game()
     def split(get_word):
         return list(get_word)
     split_list = split(get_word)
