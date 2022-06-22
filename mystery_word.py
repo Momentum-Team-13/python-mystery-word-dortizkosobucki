@@ -23,27 +23,29 @@ def make_spaces():
 def guess_against_word(split_list):
     correct_letters = []
     incorrect_letters = []
-    guesses = 8 
     display = [(letter.replace(letter, " _ ")) if letter not in correct_letters else letter for letter in split_list]
     # print(display)
     while len(incorrect_letters) < 8:
         letter = input("Guess a letter:")
         if letter.isalpha() and len(letter) == 1:
             lowercase_guess = letter.lower()
-            if lowercase_guess in split_list:
-                correct_letters.append(lowercase_guess)
-                print (f'Good job, {lowercase_guess} is in the word.')
-                display = [(letter.replace(letter, " _ "))if letter not in correct_letters else letter for letter in split_list]
-                print (display)
-                if display == correct_letters:
-                    print ('You guessed all the letters correctly! Way to go.')
-                    break
-            else: 
-                print(f'{lowercase_guess} is not in the word, try again!')
-                incorrect_letters.append(lowercase_guess)
+            if lowercase_guess not in correct_letters and lowercase_guess not in incorrect_letters:
+                if lowercase_guess in split_list:
+                    correct_letters.append(lowercase_guess)
+                    print (f'Good job, {lowercase_guess} is in the word.')
+                    display = [(letter.replace(letter, " _ "))if letter not in correct_letters else letter for letter in split_list]
+                    print (display)
+                    if display == correct_letters:
+                        print ('You guessed all the letters correctly! Way to go.')
+                        break
+                else: 
+                    print(f'{lowercase_guess} is not in the word, try again!')
+                    incorrect_letters.append(lowercase_guess)
+                    print (f"You have { 8 - len(incorrect_letters)} guesses left.")
+            else:
+                print("You've already guessed that letter, try again.")
         else:
             print (f"That guess wasn't valid, please try again!")
-            
         print(f'Letters already guessed:{incorrect_letters}')
     print (f"Game Over! The word you were trying to guess was {split_list}")
 
